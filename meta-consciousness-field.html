@@ -3,12 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<style>:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif}img{max-width:100%}[hidden]{display:none!important}#eqbar { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(env(safe-area-inset-bottom, 0px) + 52px); z-index: 2; pointer-events: none; text-align: center; width: max-content; max-width: calc(100% - 32px); }
+#eqbar .eqline { font-family: 'STIX Two Text', 'Cambria Math', Georgia, serif; font-style: italic; font-size: 20px; color: var(--gold); }
+#eqbar .eqkey { margin-top: 6px; font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 10.5px; letter-spacing: 0.04em; color: var(--fg-dim); }
+#eqbar .op { font-style: normal; font-family: 'Cambria Math', 'STIX Two Math', 'Segoe UI Symbol', 'DejaVu Sans', serif; font-size: 0.8em; }
+@media (max-width: 600px) { #eqbar .eqline { font-size: 14px; } #eqbar .eqkey { font-size: 9.5px; } }
+.e { white-space: nowrap; display: inline-block; margin: 0 0.15em; }
+.sep { opacity: 0.6; }
+</style>
 <meta name="claude:viewport-fit-sides" content="cover">
 <title>Meta-Consciousness Field</title>
 <style>
 /* Layout: full-viewport 3D field. The Recursive Continuum Field's particle figure-eights,
-   wrapped over a sphere: chains run from Reality (front) to the Horizon of Knowing (back),
+   wrapped over a sphere: chains run from Reality (front) to the Chiasm (back),
    every surface node loops into meta-consciousness at the core. The dark is consciousness. */
 :root {
   --bg: #050611;
@@ -69,35 +76,51 @@ body {
   #overlay p.extra { display: none; }
 }
 </style>
+<!-- Cloudflare Web Analytics -->
+<script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ac2f9cce777f4e87b342f7e56f71bef3"}'></script>
+<!-- End Cloudflare Web Analytics -->
+
+<script>
+(() => {
+  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbwU6LV41rrbbRiBnw6jvKNZZhCvbJspd2CKLUIov1TqQsRmZVSRFAzLrkYXcvWQ9TY3/exec';
+
+  const start = Date.now();
+  let interacted = false;
+  const flag = () => { interacted = true; };
+  ['mousedown', 'touchstart', 'wheel', 'keydown'].forEach(ev =>
+    addEventListener(ev, flag, { once: true, passive: true })
+  );
+
+  let sent = false;
+  const send = () => {
+    if (sent) return;
+    sent = true;
+    const payload = JSON.stringify({
+      page: location.pathname + location.search,
+      ms: Date.now() - start,
+      interacted,
+      ref: document.referrer || null,
+      ts: new Date().toISOString()
+    });
+    navigator.sendBeacon(ENDPOINT, payload);
+  };
+
+  addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') send();
+  });
+  addEventListener('pagehide', send);
+})();
+</script>
 </head>
 <body>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&family=STIX+Two+Text:wght@400&display=swap">
 
 <div id="stage"></div>
 <div id="overlay">
-  <div class="mark">Distinction · Without · Separation</div>
   <h1>Meta-Consciousness Field</h1>
-  <p>The Recursive Continuum folded into a sphere. Both chains run from Reality over the surface, through the quantum limits, and meet on the far side at the Horizon of Knowing, the limit of human understanding.</p>
-  <p class="extra">Every node on the surface loops through the interior into meta-consciousness at the core. The quantum limits do not.</p>
-  <p class="ground">The dark field around it all stands for consciousness itself: unlit, not empty. Meta-consciousness only shows how it interconnects.</p>
+  <p>The Recursive Continuum as a sphere. <a href="https://goatz-gotgoat.github.io/Meta-Consciousness-Sphere/" style="pointer-events:auto;color:var(--gold)">Read the figure</a></p>
 </div>
-<div id="legend-box">
-  <div class="legend-title">Legend</div>
-  <ul class="legend">
-    <li><span class="dot" style="background:#7fd4ff"></span>Phenomenological B (lived)</li>
-    <li><span class="dot" style="background:#a6c3ff"></span>Person B (seen)</li>
-    <li><span class="dot" style="background:#ffb6a6"></span>Person A (seen)</li>
-    <li><span class="dot" style="background:#ff8787"></span>Phenomenological A (lived)</li>
-    <li><span class="dot" style="background:#f2c14e"></span>Cosmological</li>
-    <li><span class="dot" style="background:#ffd98a"></span>Atomic</li>
-    <li><span class="dot" style="background:#fff1c9"></span>Quantum limits</li>
-    <li><span class="dot" style="background:#ffe4a8"></span>Reality (front)</li>
-    <li><span class="dot" style="background:#a5b4fc"></span>Horizon of Knowing (back)</li>
-    <li><span class="dot" style="background:#ffc94a;box-shadow:0 0 8px #ffc94a"></span>Meta-consciousness (core)</li>
-    <hr>
-    <li><span class="sq"></span>The dark: consciousness</li>
-  </ul>
-</div>
+<div id="eqbar"><div class="eqline"><span class="e">P = L ∞ S</span><span class="sep"> · </span><span class="e">Φ<sub>A</sub> + Φ<sub>B</sub> + Φ<sub>C</sub> + Φ<sub>M</sub> = 0</span><span class="sep"> · </span><span class="e">Ω = Ω <span class="op">⊕</span> ε(Ω), ε <span class="op">≢</span> 0</span><span class="sep"> · </span><span class="e">ρ<sub>A</sub> = Tr<sub>B</sub> |ψ⟩⟨ψ|</span></div><div class="eqkey">L lived · S seen · ∞ joint · Φ flow into Reality · Ω the whole · = the Chiasm · ε the residue, the horizon · Tr the trace a part keeps of the whole</div></div>
 <div id="hint">Drag · Scroll · Pinch</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
@@ -170,23 +193,19 @@ body {
   // as in the Recursive Continuum Field, spanning a chord between two surface points.
   const CHAINS = [
     // horizontal, toward A
-    { key: 'PA', a: 0,      b: .30*PI, ph: 0,     color: COL.PA, n: 3600, node: true },
-    { key: 'LA', a: .30*PI, b: .60*PI, ph: 0,     color: COL.LA, n: 3600, node: true },
-    { key: 'QA', a: .60*PI, b: .84*PI, ph: 0,     color: COL.Q,  n: 3000 },
-    { key: 'HA', a: .84*PI, b: PI,     ph: 0,     color: COL.H,  n: 2200 },
+    { key: 'PA', a: 0,      b: PI/3, ph: 0,     color: COL.PA, n: 3600, node: true },
+    { key: 'LA', a: PI/3, b: 2*PI/3, ph: 0,     color: COL.LA, n: 3600, node: true },
+    { key: 'QA', a: 2*PI/3, b: .87*PI, ph: 0,     color: COL.Q,  n: 3000 },
     // horizontal, toward B
-    { key: 'PB', a: 0,      b: .30*PI, ph: PI,    color: COL.PB, n: 3600, node: true },
-    { key: 'LB', a: .30*PI, b: .60*PI, ph: PI,    color: COL.LB, n: 3600, node: true },
-    { key: 'QB', a: .60*PI, b: .84*PI, ph: PI,    color: COL.Q,  n: 3000 },
-    { key: 'HB', a: .84*PI, b: PI,     ph: PI,    color: COL.H,  n: 2200 },
+    { key: 'PB', a: 0,      b: PI/3, ph: PI,    color: COL.PB, n: 3600, node: true },
+    { key: 'LB', a: PI/3, b: 2*PI/3, ph: PI,    color: COL.LB, n: 3600, node: true },
+    { key: 'QB', a: 2*PI/3, b: .87*PI, ph: PI,    color: COL.Q,  n: 3000 },
     // vertical, cosmological (up)
     { key: 'CO', a: 0,      b: .50*PI, ph: PI/2,  color: COL.CO, n: 3800, node: true },
     { key: 'QE', a: .50*PI, b: .80*PI, ph: PI/2,  color: COL.Q,  n: 3000 },
-    { key: 'HE', a: .80*PI, b: PI,     ph: PI/2,  color: COL.H,  n: 2200 },
     // vertical, atomic (down)
     { key: 'DN', a: 0,      b: .50*PI, ph: -PI/2, color: COL.DN, n: 3800, node: true },
     { key: 'QF', a: .50*PI, b: .80*PI, ph: -PI/2, color: COL.Q,  n: 3000 },
-    { key: 'HF', a: .80*PI, b: PI,     ph: -PI/2, color: COL.H,  n: 2200 },
   ];
 
   const TUBE_R = 3.0;
@@ -260,7 +279,7 @@ body {
     const sign = (i % 2 === 0 ? 1 : -1);
     addCluster(center, half, q, c.color, c.n, 4, 0.95, sign, i * 0.63);
     addEnvelope(center, half, q, c.color, Math.round(c.n * 1.4), 0.75);
-    if (c.node) surfaceNodes.push({ key: c.key, at: P((c.a + c.b) / 2, c.ph), color: c.color });
+    if (c.node) surfaceNodes.push({ key: c.key, at: P(c.b, c.ph), color: c.color });
   });
   surfaceNodes.push({ key: 'R', at: P(0, 0), color: COL.R });
   surfaceNodes.push({ key: 'H', at: P(PI, 0), color: COL.H });
@@ -273,7 +292,7 @@ body {
     addCluster(center, half, q, s.color, 2600, 2, 0.6, i % 2 ? 1 : -1, i * 0.9);
   });
 
-  // glowing orbs: Reality (front), Horizon of Knowing (back), meta-consciousness (core)
+  // glowing orbs: Reality (front), Chiasm (back), meta-consciousness (core)
   const orbGroups = [];
   function addOrb(center, rad, n, color, size, opacity, spin){
     const pos = new Float32Array(n * 3);
@@ -290,7 +309,6 @@ body {
     return grp;
   }
   addOrb(P(0, 0), 26, 4500, COL.R, 2.6, 0.9, 0.004);
-  addOrb(P(PI, 0), 30, 4500, COL.H, 2.6, 0.9, -0.004);
   addOrb(new THREE.Vector3(), 46, 9000, COL.M, 2.8, 0.95, 0.006);
   addOrb(new THREE.Vector3(), 90, 3500, COL.M, 2.2, 0.35, -0.006 / phiG);
 
@@ -298,35 +316,54 @@ body {
   scene.add(new THREE.AmbientLight(0x4a6a90, 0.7));
   { const key = new THREE.DirectionalLight(0xffffff, 0.9); key.position.set(400, 600, 500); scene.add(key); }
   { const rim = new THREE.DirectionalLight(0x88b8ff, 0.35); rim.position.set(-500, -200, -400); scene.add(rim); }
-  function nodeSphere(center, rad, color, fillOp, wireOp, spin){
-    const grp = new THREE.Group();
-    grp.position.copy(center);
-    grp.add(new THREE.Mesh(
-      new THREE.SphereGeometry(rad, 48, 32),
-      new THREE.MeshPhongMaterial({ color, emissive: color, emissiveIntensity: 0.25, shininess: 60,
-        transparent: true, opacity: fillOp, depthWrite: false, side: THREE.DoubleSide })
-    ));
+  // Janus orbs: every node is one thing with two faces (P = L ∞ S).
+  // The lived half (warm) faces meta-consciousness at the core; the seen half (cool) faces outward.
+  const LIVED = new THREE.Color(0xffa860), SEEN = new THREE.Color(0x6cc0ff);
+  function nodeSphere(center, rad, color, fillOp, wireOp, spin, janus = true){
+    const holder = new THREE.Group();
+    holder.position.copy(center);
+    if (janus && center.lengthSq() > 1) {
+      holder.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), center.clone().normalize());
+    }
+    const grp = new THREE.Group();   // spins about the outward axis, so the faces stay put
+    holder.add(grp);
+    const mat = (c, op) => new THREE.MeshPhongMaterial({ color: c, emissive: c, emissiveIntensity: 0.3, shininess: 60,
+      transparent: true, opacity: op, depthWrite: false, side: THREE.DoubleSide });
+    if (janus) {
+      const base = new THREE.Color(color);
+      const seen = base.clone().lerp(SEEN, 0.6), lived = base.clone().lerp(LIVED, 0.6);
+      grp.add(new THREE.Mesh(new THREE.SphereGeometry(rad, 48, 16, 0, 2 * PI, 0, PI / 2), mat(seen, fillOp * 1.6)));
+      grp.add(new THREE.Mesh(new THREE.SphereGeometry(rad, 48, 16, 0, 2 * PI, PI / 2, PI / 2), mat(lived, fillOp * 1.6)));
+      // the Janus face: the seam where lived meets seen
+      const ring = new THREE.Mesh(new THREE.TorusGeometry(rad, 0.9, 6, 72),
+        new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.55, depthWrite: false }));
+      ring.rotation.x = PI / 2;
+      grp.add(ring);
+    } else {
+      grp.add(new THREE.Mesh(new THREE.SphereGeometry(rad, 48, 32), mat(new THREE.Color(color), fillOp)));
+    }
     grp.add(new THREE.LineSegments(
       new THREE.WireframeGeometry(new THREE.SphereGeometry(rad, 18, 12)),
       new THREE.LineBasicMaterial({ color, transparent: true, opacity: wireOp, depthWrite: false })
     ));
-    scene.add(grp);
+    scene.add(holder);
     orbGroups.push({ grp, spin });
   }
   surfaceNodes.forEach((s, i) => {
-    const big = s.key === 'R' || s.key === 'H';
+    if (s.key === 'H') return;   // no orb at the Chiasm: its nexus is a point of light instead
+    const big = s.key === 'R';
     nodeSphere(s.at, big ? 36 : 30, s.color, big ? 0.12 : 0.09, big ? 0.32 : 0.24, (i % 2 ? 1 : -1) * 0.003);
   });
   CHAINS.filter(c => c.key[0] === 'Q').forEach((c, i) => {
-    nodeSphere(P((c.a + c.b) / 2, c.ph), 22, COL.Q, 0.05, 0.2, (i % 2 ? 1 : -1) * 0.004);
+    nodeSphere(P(c.b, c.ph), 22, COL.Q, 0.05, 0.2, (i % 2 ? 1 : -1) * 0.004);
   });
-  nodeSphere(new THREE.Vector3(), 62, COL.M, 0.08, 0.26, 0.002);
+  nodeSphere(new THREE.Vector3(), 62, COL.M, 0.08, 0.26, 0.002, false);
 
   // interconnecting lines between the node spheres
   {
     const at = {};
     surfaceNodes.forEach(s => { at[s.key] = s.at; });
-    CHAINS.filter(c => c.key[0] === 'Q').forEach(c => { at[c.key] = P((c.a + c.b) / 2, c.ph); });
+    CHAINS.filter(c => c.key[0] === 'Q').forEach(c => { at[c.key] = P(c.b, c.ph); });
     const colOf = { PA: COL.PA, LA: COL.LA, PB: COL.PB, LB: COL.LB, CO: COL.CO, DN: COL.DN, R: COL.R, H: COL.H, QA: COL.Q, QB: COL.Q, QE: COL.Q, QF: COL.Q };
     const lines = new THREE.Group();
     scene.add(lines);
@@ -350,8 +387,8 @@ body {
       }
       addLine(pts, color, opacity);
     }
-    // along the chains: Reality to the Horizon of Knowing, every way round
-    [['R','PA','LA','QA','H'], ['R','PB','LB','QB','H'], ['R','CO','QE','H'], ['R','DN','QF','H']].forEach(chain => {
+    // along the chains: Reality to the Chiasm, every way round
+    [['R','PA','LA','QA'], ['R','PB','LB','QB'], ['R','CO','QE'], ['R','DN','QF']].forEach(chain => {
       for (let i = 1; i < chain.length; i++) arc(chain[i-1], chain[i], colOf[chain[i]], 0.75);
     });
     // across the chains: rings joining neighbours at similar depth
@@ -362,48 +399,351 @@ body {
     surfaceNodes.forEach(s => addLine([s.at.clone(), new THREE.Vector3()], COL.M, 0.45));
   }
 
-  // repelled field lines: from each quantum limit, curving out away from meta-consciousness
-  // and bending back to the Horizon of Knowing, with particles drifting along them
+  // the Chiasm and the Horizon of Knowing: from each quantum limit, a bundle of lines first curls
+  // into a small sphere behind the main one, then crosses the bundle from the opposite limit at the
+  // Chiasm, bows far outward, away from meta-consciousness (the horizon), and loops back onto the
+  // opposite quantum field. Small lobe and wide lobe make one figure-eight, crossing at the Chiasm.
   const flowUpdates = [];
   {
-    const H = P(PI, 0);
-    const hDir = H.clone().normalize();
-    const cQ = new THREE.Color(COL.Q), cH = new THREE.Color(COL.H);
-    CHAINS.filter(c => c.key[0] === 'Q').forEach((c, qi) => {
-      const q = P((c.a + c.b) / 2, c.ph);
-      const qDir = q.clone().normalize();
-      let lat = new THREE.Vector3().crossVectors(qDir, hDir);
-      if (lat.lengthSq() < 1e-6) lat.set(0, 1, 0);
-      lat.normalize();
-      const mid = qDir.clone().add(hDir).normalize();
+    // the loops stay still; each pair is grouped around the midpoint of its two quantum fields
+    const pairs = [{}, {}];
+    pairs.forEach(p => { p.group = new THREE.Group(); scene.add(p.group); p.set = false; });
+    const arrowGeo = new THREE.ConeGeometry(2, 6.5, 10);
+    arrowGeo.translate(0, 1.5, 0);
+    const UP = new THREE.Vector3(0, 1, 0);
+    const XC = new THREE.Vector3(0, 0, -1.45 * RS);
+    const cQ = new THREE.Color(COL.Q), cX = new THREE.Color(0xeef0ff), cS = new THREE.Color(0xa5b4fc);
+    function ctrl(th0, k) {
+      // the path in the plane of the axis: from the quantum field in to meta-consciousness, once around
+      // the core, out through a narrowing funnel to the Chiasm, then out along the horizon bow
+      const s0 = Math.sin(th0), d0 = -Math.cos(th0), g = 1 + 0.07 * k, R = 0.36 + 0.025 * k;
+      const dy = [[d0, s0], [0.55, 0.33 + 0.02 * k], [0.12, R], [-R * 0.75, R * 0.68], [-R, 0], [-R * 0.7, -R * 0.7], [0.1, -R], [R * 0.85, -R * 0.5],
+                  [0.62, -0.27], [0.95, -0.18], [1.22, -0.09], [1.45, 0], [1.72, -0.16], [1.9 * g, -0.38 * g], [d0 + 0.42 * g, -(s0 + 0.22 * g)], [d0, -s0]];
+      return dy.map(([d, y]) => new THREE.Vector3(d, y, 0));
+    }
+    // a vortex: on the way in, each line winds around the axis, faster and faster as the funnel narrows,
+    // like water into a drain or matter into a black hole, and drains through the Chiasm; past the
+    // crossing it leaves straight along the bow. Every line in a bundle leaves and lands on one point.
+    const TW = 3.2 * PI;
+    function vortexPoints(th0, ph, k) {
+      const p2 = new THREE.CatmullRomCurve3(ctrl(th0, k), false, 'centripetal').getPoints(320), N = p2.length;
+      let ix = 0, b = Infinity;
+      p2.forEach((p, i) => { const dd = Math.hypot(p.x - 1.45, p.y); if (dd < b) { b = dd; ix = i; } });
+      return p2.map((p, i) => {
+        const t = i / (N - 1), fan = Math.min(1, 6 * t, 6 * (1 - t));
+        const a = ph + k * 0.1 * fan + (i <= ix ? TW * Math.pow(i / ix, 2.2) : 0);
+        return new THREE.Vector3(p.y * RS * Math.cos(a), p.y * RS * Math.sin(a), -p.x * RS);
+      });
+    }
+    CHAINS.filter(c => c.key[0] === 'Q').forEach(c => {
       for (let k = -2; k <= 2; k++) {
-        const push = 1.35 + 0.12 * Math.abs(k) + (k === 0 ? 0.18 : 0);
-        const c1 = qDir.clone().multiplyScalar(RS * push).add(lat.clone().multiplyScalar(k * 34));
-        const c2 = mid.clone().multiplyScalar(RS * (push + 0.22)).add(lat.clone().multiplyScalar(k * 48));
-        const curve = new THREE.CubicBezierCurve3(q.clone(), c1, c2, H.clone());
-        const pts = curve.getPoints(80);
-        const cols = new Float32Array(pts.length * 3);
-        pts.forEach((p, i) => { const col = cQ.clone().lerp(cH, i / (pts.length - 1)); cols[i*3] = col.r; cols[i*3+1] = col.g; cols[i*3+2] = col.b; });
+        const pts = vortexPoints(c.b, c.ph, k), N = pts.length;
+        let ix = 0, best = Infinity;
+        pts.forEach((p, i) => { const dd = p.distanceTo(XC); if (dd < best) { best = dd; ix = i; } });
+        const tx = ix / (N - 1);
+        const pr = pairs[(c.key === 'QA' || c.key === 'QB') ? 0 : 1];
+        if (!pr.set) {
+          const q0 = P(c.b, c.ph), q1 = P(c.b, c.ph + PI);
+          pr.M = q0.clone().add(q1).multiplyScalar(0.5);
+          pr.axis = q1.clone().sub(q0).normalize();
+          pr.group.position.copy(pr.M);
+          pr.set = true;
+        }
+        pts.forEach(p => p.sub(pr.M));
+        const colAt = t => {
+          if (t > tx) return cX.clone().lerp(cQ, (t - tx) / (1 - tx));
+          const a = t / tx;
+          return a < 0.3 ? cQ.clone().lerp(cS, a / 0.3) : a < 0.85 ? cS.clone() : cS.clone().lerp(cX, (a - 0.85) / 0.15);
+        };
+        const cols = new Float32Array(N * 3);
+        pts.forEach((p, i) => { const col = colAt(i / (N - 1)); cols[i*3] = col.r; cols[i*3+1] = col.g; cols[i*3+2] = col.b; });
         const g = new THREE.BufferGeometry().setFromPoints(pts);
         g.setAttribute('color', new THREE.BufferAttribute(cols, 3));
-        scene.add(new THREE.Line(g, new THREE.LineBasicMaterial({ vertexColors: true, transparent: true, opacity: k === 0 ? 0.8 : 0.45, depthWrite: false, blending: THREE.AdditiveBlending })));
-        // drifting particles along the line
-        const n = 70, pos = new Float32Array(n * 3), ts = new Float32Array(n), sp = new Float32Array(n);
+        pr.group.add(new THREE.Line(g, new THREE.LineBasicMaterial({ vertexColors: true, transparent: true, opacity: k === 0 ? 0.85 : 0.5, depthWrite: false, blending: THREE.AdditiveBlending })));
+        // particles spiral in round the core, drain through the crossing, and run out along the bow to the far quantum field
+        const n = 80, pos = new Float32Array(n * 3), pc = new Float32Array(n * 3), ts = new Float32Array(n), sp = new Float32Array(n);
         for (let i = 0; i < n; i++) { ts[i] = Math.random(); sp[i] = 0.0016 + Math.random() * 0.0018; }
         const pg = new THREE.BufferGeometry();
         pg.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-        scene.add(new THREE.Points(pg, pointsMat(0xdcd8ff, 3.0, 0.85)));
-        const tmp = new THREE.Vector3();
+        pg.setAttribute('color', new THREE.BufferAttribute(pc, 3));
+        pr.group.add(new THREE.Points(pg, new THREE.PointsMaterial({ size: 3.0, map: glowTex, vertexColors: true, transparent: true, opacity: 0.9, depthWrite: false, blending: THREE.AdditiveBlending, sizeAttenuation: true })));
+        // faint arrows on every bow of the horizon: each leaves the quantum field, travels the outer
+        // loop of the Horizon of Knowing and fades into the Chiasm, setting off again at random intervals
+        {
+          const NA = 4, at = [], wait = [], mats = [], cones = [];
+          for (let i = 0; i < NA; i++) {
+            const m = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.8, depthWrite: false, blending: THREE.AdditiveBlending });
+            const cone = new THREE.Mesh(arrowGeo, m);
+            cone.visible = false;
+            pr.group.add(cone);
+            at.push(1); wait.push(Math.floor(Math.random() * 500)); mats.push(m); cones.push(cone);
+          }
+          const dir = new THREE.Vector3();
+          flowUpdates.push(() => {
+            for (let i = 0; i < NA; i++) {
+              if (reduce) { cones[i].visible = false; continue; }
+              if (wait[i] > 0) { wait[i]--; cones[i].visible = false; continue; }
+              at[i] -= 0.0011;
+              if (at[i] <= tx) { at[i] = 1; wait[i] = 30 + Math.floor(Math.random() * 420); cones[i].visible = false; continue; }
+              const x = at[i] * (N - 1), j = Math.min(N - 2, Math.floor(x)), f = x - j, a = pts[j], b = pts[j + 1];
+              cones[i].position.set(a.x + (b.x - a.x) * f, a.y + (b.y - a.y) * f, a.z + (b.z - a.z) * f);
+              dir.subVectors(a, b).normalize();
+              cones[i].quaternion.setFromUnitVectors(UP, dir);
+              mats[i].color.copy(colAt(at[i]));
+              const u = (1 - at[i]) / (1 - tx);
+              mats[i].opacity = 0.8 * Math.min(1, u / 0.08) * (u > 0.85 ? (1 - u) / 0.15 : 1);
+              cones[i].visible = true;
+            }
+          });
+        }
         flowUpdates.push(() => {
           for (let i = 0; i < n; i++) {
             if (!reduce) ts[i] = (ts[i] + sp[i]) % 1;
-            curve.getPoint(ts[i], tmp);
-            pos[i*3] = tmp.x; pos[i*3+1] = tmp.y; pos[i*3+2] = tmp.z;
+            const x = ts[i] * (N - 1), j = Math.min(N - 2, Math.floor(x)), f = x - j, a = pts[j], b = pts[j + 1];
+            pos[i*3] = a.x + (b.x - a.x) * f; pos[i*3+1] = a.y + (b.y - a.y) * f; pos[i*3+2] = a.z + (b.z - a.z) * f;
+            const col = colAt(ts[i]);
+            pc[i*3] = col.r; pc[i*3+1] = col.g; pc[i*3+2] = col.b;
           }
           pg.attributes.position.needsUpdate = true;
+          pg.attributes.color.needsUpdate = true;
         });
       }
     });
+  }
+
+  // the chiasm: through the core, each person's seen side lines up with the other's lived side
+  {
+    const pos = {};
+    surfaceNodes.forEach(s => { pos[s.key] = s.at; });
+    [['PA', 'LB', COL.PA, COL.LB], ['PB', 'LA', COL.PB, COL.LA]].forEach(([a, b, ca, cb]) => {
+      const A = pos[a].clone(), B = pos[b].clone();
+      const n = 120, pts = [], cols = new Float32Array((n + 1) * 3);
+      const c1 = new THREE.Color(ca), c2 = new THREE.Color(cb);
+      for (let i = 0; i <= n; i++) {
+        const t = i / n;
+        pts.push(A.clone().lerp(B, t));
+        const c = c1.clone().lerp(c2, t);
+        cols[i*3] = c.r; cols[i*3+1] = c.g; cols[i*3+2] = c.b;
+      }
+      const g = new THREE.BufferGeometry().setFromPoints(pts);
+      g.setAttribute('color', new THREE.BufferAttribute(cols, 3));
+      scene.add(new THREE.Line(g, new THREE.LineBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.95, depthWrite: false, blending: THREE.AdditiveBlending })));
+      [[A, B, ca], [B, A, cb]].forEach(([from, to, col]) => {
+        const m = 90, pp = new Float32Array(m * 3), ts = new Float32Array(m), sp = new Float32Array(m);
+        for (let i = 0; i < m; i++) { ts[i] = Math.random(); sp[i] = 0.0025 + Math.random() * 0.002; }
+        const pg = new THREE.BufferGeometry();
+        pg.setAttribute('position', new THREE.BufferAttribute(pp, 3));
+        scene.add(new THREE.Points(pg, pointsMat(col, 3.2, 0.9)));
+        const tmp = new THREE.Vector3();
+        flowUpdates.push(() => {
+          for (let i = 0; i < m; i++) {
+            if (!reduce) ts[i] = (ts[i] + sp[i]) % 1;
+            tmp.copy(from).lerp(to, ts[i]);
+            const wob = 3 * Math.sin(ts[i] * PI);
+            pp[i*3] = tmp.x; pp[i*3+1] = tmp.y + wob * Math.sin(i); pp[i*3+2] = tmp.z + wob * Math.cos(i);
+          }
+          pg.attributes.position.needsUpdate = true;
+        });
+      });
+    });
+  }
+
+  // the Chiasm's own faint figure-eight, tumbling between the crossing and meta-consciousness at the core
+  {
+    const X = new THREE.Vector3(0, 0, -1.45 * RS);
+    const center = X.clone().multiplyScalar(0.5);
+    const half = X.length() / 2;
+    const q = orient(X.clone(), new THREE.Vector3(0, 1, 0));
+    addCluster(center, half, q, 0xd8dcff, 1800, 4, 0.32, 1, 0.9);
+    addEnvelope(center, half, q, 0xd8dcff, 4000, 0.22);
+  }
+
+  // two ways of seeing the field: from inside (m = 0), and from consciousness (m = 1)
+  const view = { m: 0, target: 0 };
+  // the nexus of the Chiasm: the most intense light in the field, with a streak shooting from it out
+  // into the dark, light and matter together, the universe's light seen from the inside and the outside
+  {
+    const X = new THREE.Vector3(0, 0, -1.45 * RS);
+    const glow = (c, o) => new THREE.SpriteMaterial({ map: glowTex, color: c, transparent: true, opacity: o, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending });
+    const halo = [[300, 0x7f8cff, 0.22], [150, 0xdfe4ff, 0.5], [64, 0xffffff, 0.95], [28, 0xffffff, 1]].map(([s, c, o]) => {
+      const sp = new THREE.Sprite(glow(c, o)); sp.scale.set(s, s, 1); sp.position.copy(X); scene.add(sp); return { sp, s };
+    });
+    const L = 3.2 * RS, n = 900;
+    const bg = new THREE.BufferGeometry().setFromPoints([X.clone(), X.clone().add(new THREE.Vector3(0, 0, -L))]);
+    bg.setAttribute('color', new THREE.BufferAttribute(new Float32Array([1, 1, 1, 0, 0, 0]), 3));
+    const beamMat = new THREE.LineBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.9, depthWrite: false, blending: THREE.AdditiveBlending });
+    scene.add(new THREE.Line(bg, beamMat));
+    const pos = new Float32Array(n * 3), col = new Float32Array(n * 3), u = new Float32Array(n), sp = new Float32Array(n), off = new Float32Array(n * 2), tint = [];
+    for (let i = 0; i < n; i++) {
+      u[i] = Math.random(); sp[i] = 0.0025 + Math.random() * 0.005;
+      const a = Math.random() * 2 * PI, r = Math.sqrt(Math.random()); off[i * 2] = Math.cos(a) * r; off[i * 2 + 1] = Math.sin(a) * r;
+      tint.push(i % 3 === 0 ? [1, 0.82, 0.5] : [0.92, 0.95, 1]);   // gold for matter, white for light
+    }
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    g.setAttribute('color', new THREE.BufferAttribute(col, 3));
+    scene.add(new THREE.Points(g, new THREE.PointsMaterial({ size: 4.2, map: glowTex, vertexColors: true, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, sizeAttenuation: true })));
+    let t = 0;
+    flowUpdates.push(() => {
+      if (!reduce) t += 0.016;
+      const pulse = (1 + 0.1 * Math.sin(t * 2.2)) * (1 + 0.35 * view.m);
+      beamMat.opacity = 0.9 * (1 - view.m);
+      halo.forEach(h => h.sp.scale.set(h.s * pulse, h.s * pulse, 1));
+      for (let i = 0; i < n; i++) {
+        if (!reduce) u[i] = (u[i] + sp[i]) % 1;
+        const w = 3 + 30 * u[i], f = Math.pow(1 - u[i], 1.5) * (1 - view.m), c = tint[i];
+        pos[i * 3] = off[i * 2] * w; pos[i * 3 + 1] = off[i * 2 + 1] * w; pos[i * 3 + 2] = X.z - u[i] * L;
+        col[i * 3] = f * c[0]; col[i * 3 + 1] = f * c[1]; col[i * 3 + 2] = f * c[2];
+      }
+      g.attributes.position.needsUpdate = true; g.attributes.color.needsUpdate = true;
+    });
+  }
+
+  // the view from consciousness. The camera flies into meta-consciousness and the whole structure is
+  // drawn in after it until the screen is pure light; then it pulls slowly back through the layers of
+  // that light, each named as it comes into view, brightest at the centre, until the whole light rests
+  // in the dark. Consciousness is the dark: the one seeing, never in the seen.
+  {
+    const lightScene = new THREE.Scene();
+    lightScene.visible = false;
+    const discTex = (() => {
+      const c = document.createElement('canvas'); c.width = c.height = 256;
+      const x = c.getContext('2d'), g = x.createRadialGradient(128, 128, 0, 128, 128, 128);
+      g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(0.78, 'rgba(255,255,255,0.85)');
+      g.addColorStop(0.9, 'rgba(255,255,255,0.35)'); g.addColorStop(1, 'rgba(255,255,255,0)');
+      x.fillStyle = g; x.fillRect(0, 0, 256, 256);
+      const t = new THREE.CanvasTexture(c); t.needsUpdate = true; return t;
+    })();
+    const NAMES = ['The Chiasm', 'Horizon of Knowing', 'Quantum limits', 'Lived A · Lived B', 'Cosmos · DNA and atoms', 'Person A · Person B', 'Reality', 'Meta-consciousness'];
+    const COLS = [0xffffff, 0xfff6e4, 0xffefcf, 0xffe6bb, 0xffdca6, 0xf6d6a8, 0xe8d4b8, 0xcfd6ff];
+    const OPS = [0.95, 0.34, 0.27, 0.22, 0.18, 0.15, 0.12, 0.1];
+    const RAD = NAMES.map((_, i) => 6 * Math.pow(380 / 6, i / 7));
+    RAD.forEach((r, i) => {
+      const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: discTex, color: COLS[i], transparent: true, opacity: OPS[i], depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending }));
+      sp.scale.set(2 * r, 2 * r, 1); lightScene.add(sp);
+    });
+    const tints = [[0xffa860, 1], [0x6cc0ff, -1]].map(([c, side]) => {
+      const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex, color: c, transparent: true, opacity: 0.14, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending }));
+      sp.scale.set(110, 110, 1); lightScene.add(sp); return { sp, side };
+    });
+    // the tunnel: streaks of light rushing past along its walls toward a light at the far end, the
+    // centre of meta-consciousness, as near-death accounts describe it
+    const tunnelScene = new THREE.Scene(); tunnelScene.visible = false;
+    const tGroup = new THREE.Group(); tunnelScene.add(tGroup);
+    const TN = 1800, tpos = new Float32Array(TN * 3), tcol = new Float32Array(TN * 3), ta = new Float32Array(TN), tr = new Float32Array(TN), tz = new Float32Array(TN), tsp = new Float32Array(TN);
+    for (let i = 0; i < TN; i++) { ta[i] = Math.random() * 2 * PI; tr[i] = 16 + Math.random() * 12; tz[i] = Math.random(); tsp[i] = 0.004 + Math.random() * 0.006; }
+    const tg = new THREE.BufferGeometry();
+    tg.setAttribute('position', new THREE.BufferAttribute(tpos, 3)); tg.setAttribute('color', new THREE.BufferAttribute(tcol, 3));
+    tGroup.add(new THREE.Points(tg, new THREE.PointsMaterial({ size: 2.6, map: glowTex, vertexColors: true, transparent: true, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending })));
+    const endLight = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex, color: 0xfff8ec, transparent: true, opacity: 1, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending }));
+    tGroup.add(endLight);
+    const _render = renderer.render.bind(renderer);
+    renderer.autoClear = false;
+    renderer.render = (s, c) => { renderer.clear(); _render(s, c); if (s === scene) { if (tunnelScene.visible) _render(tunnelScene, c); if (lightScene.visible) _render(lightScene, c); } };
+
+    // page elements: the switch, a white veil, the name of each layer, and the list
+    const css = document.createElement('style');
+    css.textContent = '.cview{position:absolute;top:14px;right:14px;z-index:4;font:500 12px/1 "JetBrains Mono",ui-monospace,Menlo,monospace;color:#e8eaf2;background:rgba(11,15,25,.7);border:1px solid #2a3350;border-radius:999px;padding:8px 13px;cursor:pointer}.cview:hover,.cview:focus-visible{border-color:#f2c14e}.cview[disabled]{opacity:.5;cursor:default}' +
+      '.cveil{position:absolute;inset:0;z-index:3;background:#fffaf0;opacity:0;pointer-events:none}.ctun{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0}' +
+      '.cname{position:absolute;left:50%;bottom:16%;transform:translateX(-50%);z-index:3;font:400 22px/1.2 "Fraunces","Times New Roman",serif;color:#fff8ec;text-shadow:0 0 18px rgba(0,0,0,.6);opacity:0;pointer-events:none;transition:opacity .9s ease;white-space:nowrap}' +
+      '.clist{position:absolute;top:56px;right:14px;z-index:3;max-width:min(300px,calc(100% - 28px));padding:12px 14px;background:rgba(11,15,25,.55);border:1px solid #2a3350;border-radius:10px;font:400 12px/1.45 "JetBrains Mono",ui-monospace,Menlo,monospace;color:#e8eaf2;opacity:0;pointer-events:none;transition:opacity 1.2s ease}.clist.on{opacity:1}.clh{color:#9aa3b8;margin-bottom:4px;letter-spacing:.04em}.cln{color:#9aa3b8;margin-bottom:8px;font-style:italic}.clr{display:flex;align-items:center;gap:9px;margin:4px 0}.clr i{width:10px;height:10px;border-radius:999px;flex-shrink:0}' +
+      '#theater .cview,#theater .clist,#theater .cname,#theater .cveil,#theater .ctun{display:none!important}';
+    document.head.appendChild(css);
+    const host = renderer.domElement.parentNode;
+    const mk = (tag, cls) => { const e = document.createElement(tag); e.className = cls; if (host) host.appendChild(e); return e; };
+    const tun = mk('div', 'ctun'), veil = mk('div', 'cveil'), nameEl = mk('div', 'cname');
+    const panel = mk('div', 'clist');
+    panel.setAttribute('aria-hidden', 'true');
+    const LV = [1, 0.88, 0.75, 0.55, 0.4, 0.3, 0.2, 0.1];
+    panel.innerHTML = '<div class="clh">Within the one light · brightest to faintest</div><div class="cln">The light is distinctions apprehended as one. Consciousness is the dark around it: the one seeing, never in the seen.</div>' +
+      NAMES.map((t, i) => '<div class="clr"><i style="background:rgba(255,246,228,' + LV[i] + ');box-shadow:0 0 ' + Math.round(10 * LV[i]) + 'px rgba(255,240,210,' + LV[i] + ')"></i>' + t + (i === 6 ? ', faintest of the material plane' : i === 7 ? ', the outer glow that holds it all' : i === 0 ? ', the bright centre' : '') + '</div>').join('');
+    const btn = mk('button', 'cview');
+    btn.type = 'button'; btn.textContent = 'View from consciousness'; btn.setAttribute('aria-pressed', 'false');
+
+    const ease = k => k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+    const clamp = k => Math.max(0, Math.min(1, k));
+    const TAN = Math.tan(22.5 * PI / 180), D0 = RAD[0] * 1.15 / TAN, D1 = RAD[7] * 1.12 / TAN;
+    let state = 'inside', t0 = 0, saved = camState.radius, shown = -1, tt = 0;
+    function setName(i) {
+      if (i === shown) return;
+      shown = i;
+      nameEl.style.opacity = 0;
+      if (i >= 0) setTimeout(() => { if (shown === i) { nameEl.textContent = NAMES[i]; nameEl.style.opacity = 1; } }, 350);
+    }
+    function go(s) { state = s; t0 = performance.now(); }
+    btn.addEventListener('click', () => {
+      if (state === 'inside') { saved = camState.radius; go('in'); btn.textContent = 'Back to the material plane'; btn.setAttribute('aria-pressed', 'true'); }
+      else if (state === 'c') { panel.classList.remove('on'); setName(-1); go('rin'); btn.textContent = 'View from consciousness'; btn.setAttribute('aria-pressed', 'false'); }
+    });
+    // one frame of the tunnel at progress uf (0 = on the material plane, 1 = at the light); dir is the
+    // direction the streaks travel: toward the viewer going in, away from the viewer coming back
+    function tunnelFrame(uf, dir) {
+      const e = Math.pow(uf, 2.1);
+      camState.radius = saved + (34 - saved) * e; updateCamera();
+      view.m = e;
+      const R = 78 - 62 * ease(clamp(uf / 0.85));
+      tun.style.opacity = clamp(uf / 0.15);
+      tun.style.background = 'radial-gradient(circle at 50% 50%, rgba(0,0,0,0) ' + R.toFixed(1) + '%, rgba(4,5,12,0.97) ' + (R + 16).toFixed(1) + '%)';
+      tunnelScene.visible = uf > 0.05;
+      tGroup.lookAt(camera.position);
+      const d = camState.radius, glow = clamp((uf - 0.05) / 0.4);
+      for (let i = 0; i < TN; i++) {
+        if (!reduce) { tz[i] += dir * tsp[i] * (0.6 + 2.4 * e); if (tz[i] > 1) tz[i] -= 1; if (tz[i] < 0) tz[i] += 1; }
+        const z = tz[i] * d * 0.97, w = Math.min(1, tz[i] / 0.25) * (tz[i] > 0.9 ? (1 - tz[i]) / 0.1 : 1) * glow;
+        const rw = tr[i] * (0.4 + z / 45);   // the walls widen toward the viewer, so the tunnel converges on the light
+        tpos[i * 3] = rw * Math.cos(ta[i]); tpos[i * 3 + 1] = rw * Math.sin(ta[i]); tpos[i * 3 + 2] = z;
+        tcol[i * 3] = w; tcol[i * 3 + 1] = w * 0.94; tcol[i * 3 + 2] = w * 0.82;
+      }
+      tg.attributes.position.needsUpdate = true; tg.attributes.color.needsUpdate = true;
+      const L = 30 + 260 * Math.pow(uf, 3); endLight.scale.set(L, L, 1);
+      veil.style.opacity = clamp((uf - 0.8) / 0.2);
+    }
+    flowUpdates.push(() => {
+      btn.disabled = !(state === 'inside' || state === 'c');
+      const th = document.getElementById('theater');
+      if (th && !th.hidden && state !== 'inside') {
+        state = 'inside'; scene.scale.setScalar(1); view.m = 0; lightScene.visible = false; tunnelScene.visible = false; veil.style.opacity = 0; tun.style.opacity = 0;
+        panel.classList.remove('on'); setName(-1); btn.textContent = 'View from consciousness';
+      }
+      if (!reduce) tt += 0.01;
+      tints.forEach(t => { const a = tt * 0.6 * t.side; t.sp.position.set(28 * Math.cos(a), 28 * Math.sin(a) * t.side, 0); });
+      const k = (performance.now() - t0);
+      if (state === 'in') {                       // tunnel vision into the centre of meta-consciousness
+        const u = clamp(k / 6500);
+        tunnelFrame(u, 1);
+        if (u >= 1) {
+          tunnelScene.visible = false; tun.style.opacity = 0;
+          scene.scale.setScalar(0.001); view.m = 1; lightScene.visible = true; camState.radius = D0; updateCamera(); go('out');
+        }
+      } else if (state === 'out') {                // pull back through the layers of light
+        const u = clamp(k / 16000), e = ease(u);
+        veil.style.opacity = 1 - clamp(u / 0.07);
+        camState.radius = D0 * Math.pow(D1 / D0, e); updateCamera();
+        let fit = -1; RAD.forEach((r, i) => { if (r * 1.12 <= TAN * camState.radius) fit = i; });
+        setName(u < 0.97 ? fit : -1);
+        if (u >= 1) { go('c'); panel.classList.add('on'); panel.setAttribute('aria-hidden', 'false'); }
+      } else if (state === 'rin') {                // back in through the layers of light, named in reverse
+        const u = clamp(k / 9000), e = ease(u);
+        veil.style.opacity = clamp((u - 0.9) / 0.1);
+        camState.radius = D1 * Math.pow(D0 / D1, e); updateCamera();
+        let fit = -1; RAD.forEach((r, i) => { if (r * 1.12 <= TAN * camState.radius) fit = i; });
+        setName(u > 0.03 && u < 0.92 ? fit : -1);
+        if (u >= 1) { lightScene.visible = false; scene.scale.setScalar(1); camState.radius = 34; updateCamera(); go('rtun'); }
+      } else if (state === 'rtun') {               // out of the tunnel, backwards, to the material plane
+        const u = clamp(k / 6500);
+        tunnelFrame(1 - u, -1);
+        if (u >= 1) { tunnelScene.visible = false; tun.style.opacity = 0; veil.style.opacity = 0; view.m = 0; state = 'inside'; }
+      }
+    });
+  }
+
+  // Reality's matching figure-eight, so both poles of the axis are joined to the core the same way
+  {
+    const R = new THREE.Vector3(0, 0, RS);
+    const center = R.clone().multiplyScalar(0.5);
+    const q = orient(R.clone(), new THREE.Vector3(0, 1, 0));
+    addCluster(center, RS / 2, q, 0xffe4a8, 1800, 4, 0.32, -1, 0.3);
+    addEnvelope(center, RS / 2, q, 0xffe4a8, 4000, 0.22);
   }
 
   // the sphere's surface: a faint silver skin
@@ -451,22 +791,48 @@ body {
   const LBL = "600 {s}px Inter, system-ui, sans-serif";
   const lbl = (lines, at, color, width, op) => textSprite(lines, { font: LBL, size: 64, color, at, width: width || 110, opacity: op });
   lbl(['Reality'], P(0, 0, RS + 52), '#ffe4a8', 90);
-  lbl(['Horizon of Knowing'], P(PI, 0, RS + 52), '#c7d0ff', 150);
+  lbl(['Chiasm'], new THREE.Vector3(0, 46, -1.5 * RS), '#eef0ff', 90);
+  lbl(['Horizon of Knowing'], new THREE.Vector3(0.34 * RS, 0.34 * RS, -2.05 * RS), '#dcd8ff', 150, 0.85);
   lbl(['Meta-consciousness'], new THREE.Vector3(0, -112, 0), '#ffd77a', 150);
-  lbl(['Person A'], P(.15*PI, 0, RS + 40), '#ffc9bd', 80, 0.75);
-  lbl(['Person B'], P(.15*PI, PI, RS + 40), '#c2d4ff', 80, 0.75);
-  lbl(['Lived A'], P(.45*PI, 0, RS + 40), '#ffa3a3', 72, 0.75);
-  lbl(['Lived B'], P(.45*PI, PI, RS + 40), '#a8e1ff', 72, 0.75);
-  lbl(['Cosmos'], P(.25*PI, PI/2, RS + 40), '#f6d27a', 72, 0.75);
-  lbl(['DNA / Atoms'], P(.25*PI, -PI/2, RS + 40), '#ffe2a6', 96, 0.75);
-  lbl(['Quantum field'], P(.72*PI, 0, RS + 40), '#fff1c9', 110, 0.8);
-  lbl(['Quantum field'], P(.72*PI, PI, RS + 40), '#fff1c9', 110, 0.8);
-  lbl(['Entanglement'], P(.65*PI, PI/2, RS + 40), '#fff1c9', 110, 0.8);
-  lbl(['Quantum foam'], P(.65*PI, -PI/2, RS + 40), '#fff1c9', 110, 0.8);
 
   const EQ = 'italic {s}px "STIX Two Text", "Cambria Math", "Times New Roman", serif';
-  textSprite(['Φᴀ + Φʙ + Φᴄ + Φᴍ = 0'], { font: EQ, size: 56, color: '#ffe4a8', at: P(0, 0, RS + 22).add(new THREE.Vector3(0, -34, 0)), width: 70, opacity: 0.7 });
-  textSprite(['Ω = Ω ⊕ ε(Ω)  ·  ε ≢ 0'], { font: EQ, size: 56, color: '#ffe9b0', at: new THREE.Vector3(0, 70, 0), width: 120, opacity: 0.75 });
+  // equation symbols, each placed on the part of the figure it stands for
+  function sym(t, at, color, h, op) {
+    const c = document.createElement('canvas'), ctx = c.getContext('2d'), S = 160;
+    const font = 'italic ' + S + 'px "STIX Two Text", "Cambria Math", "Times New Roman", serif';
+    ctx.font = font;
+    c.width = Math.ceil(ctx.measureText(t).width + S * 0.6);
+    c.height = Math.ceil(S * 1.5);
+    const draw = () => {
+      ctx.clearRect(0, 0, c.width, c.height);
+      ctx.font = font; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.lineWidth = S * 0.14; ctx.strokeStyle = 'rgba(5,6,17,0.85)'; ctx.strokeText(t, c.width / 2, c.height / 2);
+      ctx.fillStyle = color; ctx.fillText(t, c.width / 2, c.height / 2);
+    };
+    draw();
+    const tex = new THREE.CanvasTexture(c);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { draw(); tex.needsUpdate = true; });
+    const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, opacity: op || 0.92, depthTest: false, depthWrite: false }));
+    s.scale.set(h * c.width / c.height, h, 1);
+    s.position.copy(at);
+    scene.add(s);
+    return s;
+  }
+  sym('Ω', new THREE.Vector3(-0.8 * RS, 0.8 * RS, 0.25 * RS), '#ffe9b0', 62);          // the whole: the main sphere
+  sym('=', new THREE.Vector3(0, -4, -1.45 * RS - 26), '#ffffff', 44);                         // the Chiasm
+  sym('Ω', new THREE.Vector3(0, -0.5 * RS, -0.12 * RS), '#c7d0ff', 36);                  // the whole again: meta-consciousness, where the Chiasm lines return
+  sym('⊕ ε(Ω)', new THREE.Vector3(0, 0.55 * RS, -1.95 * RS), '#dcd8ff', 34);  // the horizon bows: the residue
+  sym('ΣΦ = 0', P(0, 0, RS + 22).add(new THREE.Vector3(0, -36, 0)), '#ffe4a8', 26); // Reality: the balance
+  sym('Φᴀ', P(PI/6, 0, RS + 30), '#ffc9bd', 24);
+  sym('Φʙ', P(PI/6, PI, RS + 30), '#c2d4ff', 24);
+  sym('Φᴄ', P(PI/4, PI/2, RS + 30), '#f6d27a', 24);
+  sym('Φᴍ', P(PI/4, -PI/2, RS + 30), '#ffe2a6', 24);
+  sym('Sᴀ', P(PI/3 + 0.13, 0, RS + 30), '#ffc9bd', 24);
+  sym('Sʙ', P(PI/3 + 0.13, PI, RS + 30), '#c2d4ff', 24);
+  sym('Lᴀ', P(2*PI/3 + 0.13, 0, RS + 30), '#ffa3a3', 24);
+  sym('Lʙ', P(2*PI/3 + 0.13, PI, RS + 30), '#a8e1ff', 24);
+  sym('∞', new THREE.Vector3(0, -150, 0), '#ffd77a', 36);
+  sym('ρᴀ = Trʙ |ψ⟩⟨ψ|', P(.8*PI, PI/2, RS + 75), '#fff1c9', 22);   // entanglement: the part keeps a trace of the whole                               // the core joint
 
   // --- animation ---
   const _v = new THREE.Vector3();
